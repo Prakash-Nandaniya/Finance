@@ -116,6 +116,8 @@ None beyond `scipy.stats` — backtesting tests are standard enough that impleme
 
 **Build:** Run your Week 3 VaR engine across your full 2+ years of data, log every daily exception (actual loss > VaR estimate). Run both the Kupiec and Christoffersen tests on the exception series. Output: does your model pass both tests, and if it fails one but not the other, explain concretely what that specific failure means (e.g., "correct number of breaches, but they clustered in March 2020 — the model didn't adapt fast enough to the regime shift").
 
+FRTB (Fundamental Review of Trading Book) — basics. Concept: replaces old VaR-only market risk capital framework with two approaches — Standardized Approach (SA) and Internal Models Approach (IMA), stricter desk-level model approval, Expected Shortfall replacing VaR as the primary metric. No coding needed — this is a 1-2 day conceptual read (search "FRTB explained simply"), just enough to speak to it in interviews since almost every market-risk-validation posting names it.
+
 ---
 
 # MONTH 2 — Volatility, Portfolio Construction, Factor Models
@@ -242,6 +244,8 @@ None beyond `scipy.stats` — backtesting tests are standard enough that impleme
 `xgboost` — the actual most-used model for credit scoring/PD modeling in practice per your own reference material; `shap` — genuinely required-in-practice for model explainability, not a decorative add-on, so learning to interpret (not just generate) SHAP plots is the real skill here
 
 **Build:** Build an XGBoost PD model on a real credit dataset (Kaggle Lending Club or UCI German Credit) using proper walk-forward validation (not random split — explicitly show why the random-split accuracy would have been misleadingly high if you check it as a comparison). Compute Expected Loss (PD×LGD×EAD, with reasonable assumed LGD/EAD if the dataset doesn't provide them). Add SHAP explanations for a handful of individual borrowers (not just aggregate feature importance — per-borrower is the harder, more valuable skill). Layer on IFRS 9 staging logic: classify borrowers into Stage 1/2/3 using a simple deterioration rule (e.g., PD increase beyond a threshold since origination), and show how total portfolio provisioning changes between "everyone treated as Stage 1" and proper staging. Output: PD model performance, Expected Loss table, SHAP plots for a few borrowers, and the staging/provisioning comparison — this maps almost exactly onto what a bank's credit risk or model validation team produces.
+
+SR 11-7 / OCC 2011-12 — Model Risk Management framework. The US regulatory standard (referenced globally, including by Indian bank GCCs) defining three validation pillars: conceptual soundness, ongoing monitoring, outcomes analysis. Read a free summary (search "SR 11-7 model risk management explained"). This directly maps to the "interpretation paragraph" habit you're already building into every notebook — you're informally doing outcomes analysis every week without naming it.
 
 ---
 
